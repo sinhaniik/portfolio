@@ -1,192 +1,76 @@
-# TypeScript Frontend Boilerplate (React + Vite)
+# Nikhil's Portfolio & Tech Blog
 
-A modern, lightweight frontend boilerplate built with **React**, **TypeScript**, **React Router**, **Redux Toolkit**, and **Tailwind CSS**, using **Vite** as the build tool. This project provides a clean starting point for scalable web applications, with a focus on developer experience and production-ready practices inspired by apps like [Cal.com](https://cal.com) and [Dub.sh](https://dub.sh).
+A personal portfolio and technical blog built for mapping my journey from a **Full-Stack Developer** transitioning actively into **DevOps Engineering**.
 
----
+This project serves as both a showcase for my development capabilities and an active, documented learning environment for Linux, Docker, CI/CD, and Cloud Infrastructure.
 
-## 🚀 Features
-
-- **TypeScript**: Type-safe development with strict typing for components and state.
-- **React Router**: Declarative client-side routing with sample routes (`/` and `404`).
-- **Redux Toolkit**: Modern state management with slices and TypeScript support.
-- **Tailwind CSS**: Utility-first styling with custom design tokens and production optimization.
-- **Vite**: Fast development server and optimized production builds.
-- **Prettier**: Consistent code formatting for clean, readable code.
-- **Structured Architecture**: Organized folder structure for components, pages, and assets.
+## 🚀 Live Demo
+*(Deployed on Vercel)*
+- Add URL here: [portfolio-url.com]
 
 ---
 
-## 📦 Prerequisites
+## 🛠 Tech Stack
 
-Make sure you have the following installed:
-
-- **Node.js**: Version 18.x or higher (LTS recommended)
-- **npm**: Version 9.x or higher (or yarn/pnpm)
-- **Git**: To clone the repository
+- **Framework**: React 19 (via Vite 6)
+- **Language**: TypeScript (Strict)
+- **Styling**: Tailwind CSS v4 + Custom "Coffee" CSS Variables
+- **Routing**: React Router DOM v7
+- **State Management**: Redux Toolkit (Theme toggling, etc)
+- **Content**: MDX (*planned*) for DevOps roadmap blogging
+- **Hosting**: Vercel (Auto-deployed from `main`)
 
 ---
 
-## 🛠 Getting Started
+## 🎨 Design System
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/sinhaniik/fe-ts-boilerplate.git
-cd ts-fe-boilerplate
+The portfolio utilizes a clean, minimal design aesthetic focusing heavily on whitespace and typography, explicitly built without heavy animation or graphical gimmicks.
+
+The **Coffee Color Palette** dictates the UI in both light and dark modes:
+- **Primary**: Deep Maroon (`#561C24`) | Warm Beige (`#E8D8C4` in Dark Mode)
+- **Surface**: Warm Beige (`#E8D8C4`) | Very Dark Maroon (`#2a1018` in Dark Mode)
+- **Typography**: [DM Sans](https://fonts.google.com/specimen/DM+Sans) across all components.
+
+---
+
+## 📂 Project Structure
+
+```text
+portfolio/
+├── .antigravity/         # Project architecture & design rules
+├── public/               # Static assets
+└── src/
+    ├── assets/           # Media & Resume
+    ├── components/       # Reusable layout UI (Home, Navbar, Cards)
+    ├── data/             # Static configurations (Skills, Projects)
+    ├── pages/            # View components mapping to Routes
+    ├── posts/            # (Future) MDX blog files for DevOps topics
+    └── store/            # Redux setup (themeSlice, etc)
 ```
 
-### 2. Install Dependencies
+---
+
+## 💻 Local Development Setup
+
+To run this project locally, ensure you have Node.js installed, then execute:
+
 ```bash
+# 1. Clone the repository
+git clone https://github.com/sinhaniik/portfolio.git
+cd portfolio
+
+# 2. Install dependencies
 npm install
-```
 
-### 3. Run the Development Server
-```bash
+# 3. Start the Vite development server
 npm run dev
 ```
-- Opens the app at [http://localhost:5173](http://localhost:5173).
-- Vite’s hot module replacement (HMR) ensures fast reloads.
 
-### 4. Explore the App
-- Visit `/` to see the home page with a Redux-powered counter.
-- Visit an invalid route (e.g., `/random`) to see the 404 page.
-- Use “Increment” and “Decrement” buttons to test Redux state.
-
-### 5. Format Code (Optional)
-```bash
-npm run format
-```
+Your app will be running at `http://localhost:5173`.
 
 ---
 
-## 🧱 Project Structure
-```
-ts-fe-boilerplate/
-├── public/                    # Static assets served at root (e.g., favicon.ico)
-│   ├── index.html            # Main HTML template
-│   └── favicon.ico           # Browser favicon
-├── src/                      # Source code
-│   ├── assets/               # Images, fonts, etc.
-│   │   └── images/           # Example: logo.png
-│   ├── components/           # Reusable UI components
-│   │   ├── Button.tsx
-│   │   └── Home.tsx
-│   ├── pages/                # Page components for routing
-│   │   ├── HomePage.tsx
-│   │   └── NotFoundPage.tsx
-│   ├── store/                # Redux store and slices
-│   │   ├── slices/
-│   │   │   └── counterSlice.ts
-│   │   └── index.ts
-│   ├── App.tsx               # Main app with routing
-│   ├── index.tsx             # Entry point
-│   ├── styles.css            # Global styles with Tailwind CSS
-│   └── react-app-env.d.ts    # Type declarations
-├── .gitignore
-├── package.json
-├── prettier.config.js
-├── tailwind.config.js
-├── tsconfig.json
-├── tsconfig.node.json
-├── vite.config.ts
-└── README.md
-```
-
----
-
-## 🔧 Available Scripts
-
-```bash
-npm run dev        # Start Vite development server
-npm run build      # Build the app for production
-npm run preview    # Serve the production build locally
-npm run format     # Format files with Prettier
-```
-
----
-
-## 🚢 Building for Production
-
-To create an optimized build:
-```bash
-npm run build
-```
-- Outputs to `dist/`
-- Tailwind CSS uses PurgeCSS to remove unused styles
-
-### Test the Build:
-```bash
-npm run preview
-```
-
----
-
-## 🧩 Troubleshooting
-
-### Redux Error:
-**Uncaught Error: could not find react-redux context value**
-
-Ensure your `src/index.tsx` wraps `<App />` with `<Provider>`:
-```tsx
-import { Provider } from 'react-redux';
-import store from './store';
-root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
-```
-
-### Tailwind Not Working:
-- Check `src/styles.css` includes:
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-- Ensure `styles.css` is imported in `index.tsx`.
-
-### Port Conflict:
-- Set a custom port in `vite.config.ts`:
-```ts
-server: {
-  port: 3000
-}
-```
-
-### Build Issues:
-```bash
-rm -rf node_modules package-lock.json
-npm install
-npm run build
-```
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add your feature"
-   ```
-4. Push and open a Pull Request
-
----
-
-## 📄 License
-MIT License
-
----
-
-## 🙏 Acknowledgments
-- Inspired by production apps like [Cal.com](https://cal.com) and [Dub.sh](https://dub.sh)
-- Built with Vite, React, and Tailwind CSS
-
----
-
-Happy hacking! 💻
-
+## ✨ Features Currently Active
+- **Full responsive design**: Built "mobile-first" scaling neatly to desktop width.
+- **Redux-driven Dark Mode**: Synchronized standard HTML class injection (`<html class="dark">`).
+- **Static Content Configuration**: Easily updating Portfolio items natively via `/data` lists (Skills/Featured Projects).
