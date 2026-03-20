@@ -1,8 +1,10 @@
 import Home from '../components/Home/Home';
+import { SEO } from '@/components/SEO/SEO';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="w-full">
+      <SEO title="Home" description="Nikhil - Full-Stack Developer & DevOps Engineer Portfolio" />
       <Home />
     </div>
   );

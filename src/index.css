@@ -1,39 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: var(--color-primary-base);
-  --color-secondary: var(--color-secondary-base);
-  --color-surface: var(--color-surface-base);
-  --color-muted: var(--color-muted-base);
-  --color-background: var(--color-background-base);
-  --color-text: var(--color-text-base);
-  --color-text-muted: var(--color-text-muted-base);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-surface: var(--color-surface);
+  --color-muted: var(--color-muted);
+  --color-background: var(--color-background);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-border: var(--color-border);
+  --color-accent: var(--color-accent);
   --font-sans: "DM Sans", sans-serif;
 }
 
 :root {
-  --color-primary-base: #561C24;
-  --color-secondary-base: #6D2932;
-  --color-surface-base: #E8D8C4;
-  --color-muted-base: #C7B7A3;
-  --color-background-base: #F5EDE0;
-  --color-text-base: #1a0a0a;
-  --color-text-muted-base: #561C24cc;
+  --color-primary:       #561C24;
+  --color-secondary:     #6D2932;
+  --color-surface:       #E8D8C4;
+  --color-muted:         #C7B7A3;
+  --color-background:    #F5EDE0;
+  --color-text:          #1a0a0a;
+  --color-text-muted:    rgba(86, 28, 36, 0.7);
+  --color-border:        #C7B7A3;
+  --color-accent:        #561C24;
 }
 
-html.dark {
-  --color-primary-base: #E8D8C4;
-  --color-secondary-base: #C7B7A3;
-  --color-surface-base: #2a1018;
-  --color-muted-base: #3d1a22;
-  --color-background-base: #1a080e;
-  --color-text-base: #E8D8C4;
-  --color-text-muted-base: #C7B7A3;
+.dark {
+  --color-primary:       #E8D8C4;
+  --color-secondary:     #C7B7A3;
+  --color-surface:       #1e0f13;
+  --color-muted:         #2e1820;
+  --color-background:    #110a0c;
+  --color-text:          #EDE0D4;
+  --color-text-muted:    #9a8478;
+  --color-border:        #2e1820;
+  --color-accent:        #C7B7A3;
 }
 
 body {
-  background-color: var(--color-background-base);
-  color: var(--color-text-base);
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: var(--font-sans);
   transition: background-color 0.15s ease, color 0.15s ease;
 }
