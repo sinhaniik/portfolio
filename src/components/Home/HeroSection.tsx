@@ -8,10 +8,10 @@ export const HeroSection = () => {
         Nikhil
       </h1>
       <h2 className="text-xl md:text-2xl font-medium text-text-muted mb-6">
-        Full-Stack Developer &rarr; DevOps Engineer
+        Software Engineer &middot; Infrastructure &amp; Full-Stack
       </h2>
       <p className="text-base font-normal text-text-muted max-w-2xl mb-10 leading-relaxed">
-        I build web applications and I am actively transitioning into DevOps. Currently deep in Linux, Docker, and cloud infrastructure.
+        I build full-stack web applications and operate at the infrastructure layer — containerising systems, managing Linux servers, and automating deployments in production. Based in Bengaluru, open to roles abroad.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -30,7 +30,7 @@ export const HeroSection = () => {
       </div>
 
       <p className="text-sm font-normal text-text-muted">
-        Open to DevOps roles in USA &middot; Canada &middot; Australia &middot; Europe
+        Open to Software Engineering and DevOps roles in USA &middot; Canada &middot; Australia &middot; New Zealand &middot; Europe
       </p>
     </section>
   );

@@ -58,8 +58,8 @@ export const projects: Project[] = [
   {
     id: "hmis-docker",
     title: "HMIS Containerisation",
-    description: "Containerised a Hospital Management Information System using Docker and deployed it to a production Linux server running RHEL.",
-    longDescription: "Handled end-to-end containerisation — Docker image builds, environment configuration, and production deployment on RHEL servers. Managed the full deployment lifecycle for multiple applications.",
+    description: "Containerised a Hospital Management Information System end-to-end using Docker — from image builds to production deployment on RHEL Linux servers.",
+    longDescription: "Owned the full containerisation lifecycle: wrote Dockerfiles, configured environments, built images, and pushed to production RHEL servers. Managed deployment for multiple applications simultaneously. This wasn't a local or staging exercise — these containers ran in production serving real hospital operations.",
     tags: ["Docker", "Linux", "RHEL", "DevOps", "Deployment"],
     category: "DevOps",
     type: "professional",
@@ -97,8 +97,8 @@ export const projects: Project[] = [
   {
     id: "ilri-infra",
     title: "ILRI Infrastructure & Client Ops",
-    description: "Acting as secondary technical owner for ILRI — managing deployments on Linux servers, client deliverables, and BAU operations.",
-    longDescription: "Handling application deployments on Linux servers, identifying system vulnerabilities for production stability, and directly engaging with clients to gather requirements and translate them into technical specifications.",
+    description: "Secondary technical owner for ILRI — managing production Linux deployments, system vulnerabilities, client requirements, and BAU operations across release cycles.",
+    longDescription: "Handled application deployments on Linux servers, identified and addressed system vulnerabilities to maintain production stability, coordinated client deliverables, and translated business requirements into technical specs. Acting as the technical interface between the client and the engineering team.",
     tags: ["Linux", "Deployment", "Infrastructure", "Client Management"],
     category: "DevOps",
     type: "professional",

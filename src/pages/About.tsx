@@ -34,13 +34,13 @@ const AboutPage: React.FC = () => {
 
           <div className="flex flex-col gap-4 text-base leading-relaxed text-[--color-text]">
             <p>
-              I'm a Software Development Engineer at ClaimZippy, where I build full-stack web applications using the MERN stack and TypeScript. I started as an intern, grew into the role, and recently got promoted — but my focus has shifted.
+              I'm a Software Engineer at ClaimZippy in Bengaluru, where I work across the full stack — React, TypeScript, Node.js, and Python on the application side, and Docker, Linux, and RHEL on the infrastructure side. I've shipped production features, containerised hospital management systems, managed deployment pipelines, and handled client-facing technical operations.
             </p>
             <p>
-              I'm actively transitioning into DevOps. Not because I stopped enjoying development, but because I want to understand the full picture — how code ships, how systems run, how infrastructure scales. I'm working through a structured 12-week roadmap covering Linux, Docker, CI/CD, AWS, Kubernetes, and more.
+              Most SDE resumes stop at the application layer. Mine doesn't. I've deployed containerised applications to production Linux servers, managed RHEL infrastructure, written Bash and Python automation for real workflows, and maintained systems that clients depend on daily. That cross-layer experience is what I'm doubling down on.
             </p>
             <p>
-              I'm targeting DevOps roles in the USA, Canada, Australia, New Zealand, and Europe. If you're building something interesting and need someone who can bridge both worlds — let's talk.
+              I'm targeting Software Engineering and DevOps roles abroad — in the USA, Canada, Australia, New Zealand, and Europe — where I can work on systems that demand both engineering depth and operational ownership.
             </p>
           </div>
         </div>
@@ -66,9 +66,9 @@ const AboutPage: React.FC = () => {
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
-              <h3 className="text-xl font-medium text-[--color-primary]">Where I started</h3>
+              <h3 className="text-xl font-medium text-[--color-primary]">What I build</h3>
               <p className="text-base text-[--color-text-muted] leading-relaxed">
-                3 years building React frontends and Node.js backends. I understand how applications are built from the inside.
+                Full-stack applications with React, TypeScript, Node.js, and MongoDB. I've shipped production features, refactored codebases for performance, and built client-facing products end to end.
               </p>
             </div>
 
@@ -77,9 +77,9 @@ const AboutPage: React.FC = () => {
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
-              <h3 className="text-xl font-medium text-[--color-primary]">What changed</h3>
+              <h3 className="text-xl font-medium text-[--color-primary]">What I operate</h3>
               <p className="text-base text-[--color-text-muted] leading-relaxed">
-                I kept asking questions beyond the code — how does this deploy? what happens when it fails at 3am? who owns the infrastructure? I wanted those answers.
+                Production Docker deployments on RHEL servers, Bash automation, Python RPA workflows, and Linux infrastructure support. Not in a sandbox — in systems clients use every day.
               </p>
             </div>
 
@@ -88,9 +88,9 @@ const AboutPage: React.FC = () => {
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
-              <h3 className="text-xl font-medium text-[--color-primary]">Where I'm going</h3>
+              <h3 className="text-xl font-medium text-[--color-primary]">What I'm building next</h3>
               <p className="text-base text-[--color-text-muted] leading-relaxed">
-                Deep into Linux, containerisation, cloud, and automation. Every week I'm building something in my home lab and writing about it.
+                CI/CD pipelines, Kubernetes, Terraform, and cloud infrastructure on AWS. Adding systematic depth to what I've already done hands-on in production.
               </p>
             </div>
           </div>
@@ -192,10 +192,10 @@ const AboutPage: React.FC = () => {
       {/* Section 3 — Currently Learning */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto">
         <h2 className="text-[32px] font-medium text-[--color-primary] mb-2">
-          What I'm Learning Right Now
+          Currently Building
         </h2>
         <p className="text-base text-[--color-text-muted] mb-12">
-          Working through a 12-week DevOps roadmap — here's where I am.
+          Hands-on projects and structured learning — building the gaps between what I've done in production and full infrastructure ownership.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -246,7 +246,7 @@ const AboutPage: React.FC = () => {
       {/* Section 4 — CTA */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-[50rem] mx-auto text-center flex flex-col items-center gap-8">
         <h2 className="text-[32px] font-medium text-[--color-primary]">
-          Want to work together?
+          Looking for someone who ships and operates?
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '@/components/SEO/SEO';
 import { projects, Project } from '@/data/projects';
@@ -123,8 +123,8 @@ export default function Projects() {
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-4 py-1 rounded-full text-[14px] font-medium transition-colors ${activeTab === tab
-                  ? 'bg-[--color-primary] text-[--color-surface]'
-                  : 'bg-transparent text-[--color-text-muted] hover:text-[--color-text]'
+                ? 'bg-[--color-primary] text-[--color-surface]'
+                : 'bg-transparent text-[--color-text-muted] hover:text-[--color-text]'
                 }`}
             >
               {tab}
