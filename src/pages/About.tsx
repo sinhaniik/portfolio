@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '@/components/SEO/SEO';
+import Terminal from '@/components/Terminal/Terminal';
 import { timelineItems } from "@/data/timeline";
 
 const learningItems = [
@@ -21,8 +22,10 @@ const AboutPage: React.FC = () => {
       <SEO title="About" description="My journey from Software Development to DevOps." />
 
       {/* Section 1 — Intro / Who I Am */}
-      <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto flex flex-col-reverse md:flex-row gap-12 items-center">
-        <div className="flex-1 flex flex-col gap-6 order-2 md:order-1">
+      <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left column — text */}
+          <div className="flex flex-col gap-6">
           <div>
             <span className="text-[12px] uppercase tracking-wide text-[--color-text-muted] font-medium block mb-2">
               About me
@@ -45,10 +48,9 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 w-full order-1 md:order-2">
-          <div className="w-full aspect-[3/4] bg-[--color-surface] rounded-xl border border-[--color-border] flex items-center justify-center">
-            {/* Replace with actual photo: src/assets/profile.jpg */}
-            <span className="text-[--color-text-muted] font-medium">Photo</span>
+          {/* Right column — terminal */}
+          <div className="w-full">
+            <Terminal />
           </div>
         </div>
       </section>
