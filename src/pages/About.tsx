@@ -23,9 +23,9 @@ const AboutPage: React.FC = () => {
 
       {/* Section 1 — Intro / Who I Am */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
           {/* Left column — text */}
-          <div className="flex flex-col gap-6">
+          <div className="lg:col-span-2 flex flex-col gap-6">
           <div>
             <span className="text-[12px] uppercase tracking-wide text-[--color-text-muted] font-medium block mb-2">
               About me
@@ -49,7 +49,7 @@ const AboutPage: React.FC = () => {
         </div>
 
           {/* Right column — terminal */}
-          <div className="w-full">
+          <div className="lg:col-span-3 w-full">
             <Terminal />
           </div>
         </div>

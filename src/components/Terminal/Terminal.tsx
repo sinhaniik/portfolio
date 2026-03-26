@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const lines = [
   { text: "whoami", delay: 400, color: "#e2e8f0", isCommand: true },
@@ -24,10 +24,13 @@ export default function Terminal() {
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [replayKey, setReplayKey] = useState<number>(0);
 
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
+  // Auto scroll terminal body to bottom as lines appear without shifting page layout
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
+    }
   }, [visibleLines, currentText]);
 
   useEffect(() => {
@@ -76,13 +79,9 @@ export default function Terminal() {
   }, [replayKey]);
 
   return (
-    <div 
-      className="w-full flex justify-center rounded-xl relative overflow-hidden"
-      style={{
-        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255,255,255,0.04)"
-      }}
-    >
-      <style dangerouslySetInnerHTML={{ __html: `
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes blink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
@@ -90,6 +89,18 @@ export default function Terminal() {
         .animate-blink {
           animation: blink 1s step-end infinite;
           color: #a3e635;
+        }
+        .terminal-wrapper {
+          height: 440px;
+          min-height: 440px;
+          max-height: 440px;
+        }
+        @media (min-width: 1024px) {
+          .terminal-wrapper {
+            height: 480px;
+            min-height: 480px;
+            max-height: 480px;
+          }
         }
         .terminal-body::-webkit-scrollbar { 
           width: 4px; 
@@ -106,21 +117,22 @@ export default function Terminal() {
           background: #3a3a3a; 
         }
       `}} />
-      
-      <div 
-        className="w-full rounded-xl flex flex-col font-mono"
-        style={{ 
-          background: '#0d0d0d', 
+
+      <div
+        className="terminal-wrapper w-full rounded-xl flex flex-col font-mono relative overflow-hidden"
+        style={{
+          background: '#0d0d0d',
           border: '1px solid #1f1f1f',
-          color: '#e2e8f0' 
+          color: '#e2e8f0',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255,255,255,0.04)'
         }}
       >
         {/* Title Bar */}
-        <div 
+        <div
           className="flex items-center shrink-0 relative"
-          style={{ 
-            background: '#1a1a1a', 
-            height: '32px', 
+          style={{
+            background: '#1a1a1a',
+            height: '32px',
             borderBottom: '1px solid #1f1f1f',
             paddingLeft: '12px',
             paddingRight: '12px'
@@ -132,7 +144,7 @@ export default function Terminal() {
             <div className="rounded-full" style={{ width: '10px', height: '10px', background: '#febc2e' }}></div>
             <div className="rounded-full" style={{ width: '10px', height: '10px', background: '#28c840' }}></div>
           </div>
-          
+
           {/* Label */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <span style={{ color: '#666', fontSize: '11px', letterSpacing: '0.02em' }}>nikhil — bash</span>
@@ -140,7 +152,7 @@ export default function Terminal() {
 
           {/* Replay Button */}
           <div className="ml-auto relative z-10">
-            <button 
+            <button
               onClick={() => setReplayKey(k => k + 1)}
               style={{ fontSize: '11px', color: '#555', background: 'none', border: 'none', cursor: 'pointer' }}
               className="hover:text-[#a3e635] transition-colors"
@@ -151,54 +163,57 @@ export default function Terminal() {
         </div>
 
         {/* Terminal Body */}
-        <div 
-          className="terminal-body flex-grow overflow-y-auto overflow-x-auto whitespace-pre scroll-smooth"
-          style={{ 
+        <div
+          className="terminal-body whitespace-pre text-[11.5px] lg:text-[12.5px]"
+          ref={bodyRef}
+          style={{
+            flex: 1,
+            minHeight: 0,
+            overflowY: 'auto',
+            overflowX: 'auto',
             padding: '14px 16px',
-            maxHeight: '380px' 
+            lineHeight: 1.8,
+            fontFamily: 'monospace',
+            whiteSpace: 'pre'
           }}
         >
-          <div className="text-[11.5px] md:text-[12.5px] leading-[1.8]">
-            {lines.slice(0, visibleLines).map((line, idx) => (
-              <div key={idx}>
-                {line.text === "" ? (
-                  <div style={{ borderBottom: '0.5px solid #1a1a1a', margin: '8px 0' }} />
-                ) : (
-                  <>
-                    {line.isCommand && <span style={{ color: '#4a5568' }}>nikhil@portfolio:~$ </span>}
-                    {!line.isCommand && <span className="mr-2">  </span>}
-                    <span style={{ color: line.color }}>{line.text}</span>
-                  </>
-                )}
-              </div>
-            ))}
-            
-            {/* Currently typing line */}
-            {visibleLines < lines.length && (
-              <div>
-                {lines[visibleLines].text !== "" && (
-                  <>
-                    {lines[visibleLines].isCommand && <span style={{ color: '#4a5568' }}>nikhil@portfolio:~$ </span>}
-                    {!lines[visibleLines].isCommand && <span className="mr-2">  </span>}
-                    <span style={{ color: lines[visibleLines].color }}>{currentText}</span>
-                    {isTyping && <span className="animate-blink ml-px">▋</span>}
-                  </>
-                )}
-              </div>
-            )}
+          {lines.slice(0, visibleLines).map((line, idx) => (
+            <div key={idx}>
+              {line.text === "" ? (
+                <div style={{ borderBottom: '0.5px solid #1a1a1a', margin: '8px 0' }} />
+              ) : (
+                <>
+                  {line.isCommand && <span style={{ color: '#4a5568' }}>nikhil@portfolio:~$ </span>}
+                  {!line.isCommand && <span className="mr-2">  </span>}
+                  <span style={{ color: line.color }}>{line.text}</span>
+                </>
+              )}
+            </div>
+          ))}
 
-            {/* End Cursor */}
-            {visibleLines >= lines.length && (
-              <div className="mt-1">
-                <span style={{ color: '#4a5568' }}>nikhil@portfolio:~$ </span>
-                <span className="animate-blink ml-1">▋</span>
-              </div>
-            )}
-            
-            <div ref={bottomRef} className="h-2" />
-          </div>
+          {/* Currently typing line */}
+          {visibleLines < lines.length && (
+            <div>
+              {lines[visibleLines].text !== "" && (
+                <>
+                  {lines[visibleLines].isCommand && <span style={{ color: '#4a5568' }}>nikhil@portfolio:~$ </span>}
+                  {!lines[visibleLines].isCommand && <span className="mr-2">  </span>}
+                  <span style={{ color: lines[visibleLines].color }}>{currentText}</span>
+                  {isTyping && <span className="animate-blink ml-px">▋</span>}
+                </>
+              )}
+            </div>
+          )}
+
+          {/* End Cursor */}
+          {visibleLines >= lines.length && (
+            <div className="mt-1">
+              <span style={{ color: '#4a5568' }}>nikhil@portfolio:~$ </span>
+              <span className="animate-blink ml-1">▋</span>
+            </div>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
