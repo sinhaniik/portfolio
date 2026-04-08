@@ -5,15 +5,29 @@ import Terminal from '@/components/Terminal/Terminal';
 import { timelineItems } from "@/data/timeline";
 
 const learningItems = [
-  { topic: "Linux & Shell scripting", status: "in-progress" },
-  { topic: "SSH & key-based auth", status: "done" },
-  { topic: "File permissions & users", status: "done" },
-  { topic: "Networking fundamentals", status: "upcoming" },
-  { topic: "Docker & containers", status: "upcoming" },
-  { topic: "CI/CD pipelines", status: "upcoming" },
-  { topic: "AWS core services", status: "upcoming" },
-  { topic: "Kubernetes basics", status: "upcoming" },
-  { topic: "Terraform / IaC", status: "upcoming" },
+  { topic: "Linux Foundations & Shell Scripting", status: "done" },
+  { topic: "SSH & Key-Based Authentication", status: "done" },
+  { topic: "File Permissions & User Management", status: "done" },
+
+  { topic: "Networking Fundamentals", status: "upcoming" },
+  { topic: "Git & Developer Workflow", status: "done" },
+
+  { topic: "Docker & Containerization", status: "done" },
+
+  { topic: "CI/CD Pipelines (Jenkins + GitHub Actions)", status: "upcoming" },
+
+  { topic: "AWS Core Services (EC2, S3, IAM, VPC)", status: "in-progress" },
+
+  { topic: "CI/CD to Cloud & Secrets Management", status: "upcoming" },
+
+  { topic: "Kubernetes Fundamentals", status: "upcoming" },
+  { topic: "Kubernetes Networking, Helm & Security", status: "upcoming" },
+
+  { topic: "Monitoring & Logging (Prometheus, Grafana, Loki)", status: "upcoming" },
+
+  { topic: "Terraform & Infrastructure as Code", status: "upcoming" },
+
+  { topic: "EKS & Advanced Deployment", status: "upcoming" },
 ];
 
 const AboutPage: React.FC = () => {
@@ -26,27 +40,27 @@ const AboutPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
           {/* Left column — text */}
           <div className="lg:col-span-2 flex flex-col gap-6">
-          <div>
-            <span className="text-[12px] uppercase tracking-wide text-[--color-text-muted] font-medium block mb-2">
-              About me
-            </span>
-            <h1 className="text-4xl md:text-5xl font-semibold text-[--color-primary]">
-              I'm Nikhil
-            </h1>
-          </div>
+            <div>
+              <span className="text-[12px] uppercase tracking-wide text-[--color-text-muted] font-medium block mb-2">
+                About me
+              </span>
+              <h1 className="text-4xl md:text-5xl font-semibold text-[--color-primary]">
+                I'm Nikhil
+              </h1>
+            </div>
 
-          <div className="flex flex-col gap-4 text-base leading-relaxed text-[--color-text]">
-            <p>
-              I'm a Software Engineer at ClaimZippy in Bengaluru, where I work across the full stack — React, TypeScript, Node.js, and Python on the application side, and Docker, Linux, and RHEL on the infrastructure side. I've shipped production features, containerised hospital management systems, managed deployment pipelines, and handled client-facing technical operations.
-            </p>
-            <p>
-              Most SDE resumes stop at the application layer. Mine doesn't. I've deployed containerised applications to production Linux servers, managed RHEL infrastructure, written Bash and Python automation for real workflows, and maintained systems that clients depend on daily. That cross-layer experience is what I'm doubling down on.
-            </p>
-            <p>
-              I'm targeting Software Engineering and DevOps roles abroad — in the USA, Canada, Australia, New Zealand, and Europe — where I can work on systems that demand both engineering depth and operational ownership.
-            </p>
+            <div className="flex flex-col gap-4 text-base leading-relaxed text-[--color-text]">
+              <p>
+                I'm a Software Engineer at ClaimZippy in Bengaluru, where I work across the full stack — React, TypeScript, Node.js, and Python on the application side, and Docker, Linux, and RHEL on the infrastructure side. I've shipped production features, containerised hospital management systems, managed deployment pipelines, and handled client-facing technical operations.
+              </p>
+              <p>
+                Most SDE resumes stop at the application layer. Mine doesn't. I've deployed containerised applications to production Linux servers, managed RHEL infrastructure, written Bash and Python automation for real workflows, and maintained systems that clients depend on daily. That cross-layer experience is what I'm doubling down on.
+              </p>
+              <p>
+                I'm targeting Software Engineering and DevOps roles abroad — in the USA, Canada, Australia, New Zealand, and Europe — where I can work on systems that demand both engineering depth and operational ownership.
+              </p>
+            </div>
           </div>
-        </div>
 
           {/* Right column — terminal */}
           <div className="lg:col-span-3 w-full">

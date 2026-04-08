@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 export const SEO = ({ title, description, url, image, type = 'website' }: SEOProps) => {
-  const siteName = "Nikhil | Portfolio";
+  const siteName = "Nikhil | SDE & Infrastructure";
   return (
     <Helmet>
       {/* Standard metadata tags */}
