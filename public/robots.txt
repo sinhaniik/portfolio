@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abniunifiedengineering.com/sitemap.xml
+Sitemap: https://sinhaniik.com/sitemap.xml
