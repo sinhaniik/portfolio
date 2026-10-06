@@ -40,12 +40,6 @@ export function getRepoCategory(repo: GitHubRepo): "Dev" | "DevOps" | "Personal"
   return "Dev";
 }
 
-// Assigns a cover color cycling through Coffee palette by index
-export function getRepoCoverColor(index: number): string {
-  const colors = ["#561C24", "#6D2932", "#9B4D54", "#C7B7A3", "#E8D8C4", "#6D2932", "#561C24"];
-  return colors[index % colors.length];
-}
-
 // Formats "2024-03-15T10:00:00Z" → "Mar 2024"
 export function formatRepoDate(isoString: string): string {
   return new Date(isoString).toLocaleDateString("en-US", { month: "short", year: "numeric" });

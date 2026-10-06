@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useGitHubRepos } from "@/hooks/useGitHubRepos";
-import { getRepoCoverColor, formatRepoName, getRepoCategory } from "@/utils/githubHelpers";
+import { formatRepoName, getRepoCategory } from "@/utils/githubHelpers";
 
 export const FeaturedProjectsSection = () => {
   const { repos, loading, error } = useGitHubRepos();
@@ -9,19 +9,20 @@ export const FeaturedProjectsSection = () => {
   return (
     <section className="py-20 px-6 md:px-16 lg:px-32">
       <div className="max-w-5xl mx-auto">
-        <h2 style={{ fontSize: "32px", fontWeight: 500, color: "var(--color-text)", marginBottom: "32px" }}>
+        <h2 className="mb-8 text-[32px] font-medium text-text">
           Personal & learning projects
         </h2>
 
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[0, 1, 2].map(i => (
-              <div key={i} style={{ background: "var(--color-surface)", borderRadius: "12px", overflow: "hidden", border: "0.5px solid var(--color-border)" }}>
-                <div style={{ height: "80px", background: "var(--color-muted)", opacity: 0.4 }} />
-                <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
-                  <div style={{ height: "16px", background: "var(--color-muted)", borderRadius: "4px", opacity: 0.4, width: "60%" }} />
-                  <div style={{ height: "12px", background: "var(--color-muted)", borderRadius: "4px", opacity: 0.3, width: "90%" }} />
-                  <div style={{ height: "12px", background: "var(--color-muted)", borderRadius: "4px", opacity: 0.3, width: "75%" }} />
+              <div key={i} className="overflow-hidden rounded-xl border-[0.5px] border-border bg-surface">
+                <div className="h-[3px] bg-border" />
+                <div className="flex flex-col gap-3 p-6">
+                  <div className="h-4 w-16 rounded bg-muted/40" />
+                  <div className="h-5 w-2/3 rounded bg-muted/40" />
+                  <div className="h-4 w-full rounded bg-muted/30" />
+                  <div className="h-4 w-5/6 rounded bg-muted/30" />
                 </div>
               </div>
             ))}
@@ -32,69 +33,29 @@ export const FeaturedProjectsSection = () => {
           <p className="text-base text-text-muted">No public repositories yet.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {featuredRepos.map((repo, index) => (
+            {featuredRepos.map((repo) => (
               <a
                 key={repo.id}
                 href={repo.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  background: "var(--color-surface)",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  border: "0.5px solid var(--color-border)",
-                  textDecoration: "none",
-                  display: "block",
-                  transition: "transform 150ms ease, border-color 150ms ease",
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "var(--color-primary)";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)";
-                }}
+                className="block overflow-hidden rounded-xl border-[0.5px] border-border bg-surface no-underline transition-all duration-150 ease-in-out hover:-translate-y-[3px] hover:border-primary"
               >
-                {/* Cover color band */}
-                <div style={{ height: "80px", background: getRepoCoverColor(index) }} />
-
-                {/* Card content */}
-                <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "8px" }}>
-                  {/* Category badge */}
-                  <span style={{
-                    fontSize: "10px", fontWeight: 500, padding: "2px 8px",
-                    borderRadius: "999px", background: "var(--color-background)",
-                    color: "var(--color-primary)", border: "0.5px solid var(--color-border)",
-                    alignSelf: "flex-start", textTransform: "uppercase", letterSpacing: "0.05em"
-                  }}>
+                <div className="h-[3px] bg-primary" />
+                <div className="flex flex-col gap-3 p-6">
+                  <span className="self-start rounded-full border border-border bg-background px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-primary">
                     {getRepoCategory(repo)}
                   </span>
-
-                  {/* Title */}
-                  <h3 style={{ fontSize: "15px", fontWeight: 600, color: "var(--color-text)", margin: 0 }}>
+                  <h3 className="m-0 text-[15px] font-semibold text-text">
                     {formatRepoName(repo.name)}
                   </h3>
-
-                  {/* Description */}
-                  <p style={{
-                    fontSize: "13px", color: "var(--color-text-muted)", margin: 0,
-                    lineHeight: 1.6,
-                    display: "-webkit-box", WebkitLineClamp: 2,
-                    WebkitBoxOrient: "vertical", overflow: "hidden"
-                  }}>
+                  <p className="m-0 line-clamp-2 text-[13px] leading-relaxed text-text-muted">
                     {repo.description ?? "Visit GitHub for details."}
                   </p>
-
-                  {/* Tags */}
                   {repo.topics.length > 0 && (
-                    <div style={{ display: "flex", gap: "4px", flexWrap: "wrap", marginTop: "4px" }}>
+                    <div className="mt-1 flex flex-wrap gap-1">
                       {repo.topics.slice(0, 3).map(topic => (
-                        <span key={topic} style={{
-                          fontSize: "10px", padding: "1px 6px", borderRadius: "999px",
-                          background: "var(--color-background)", color: "var(--color-primary)",
-                          border: "0.5px solid var(--color-border)"
-                        }}>
+                        <span key={topic} className="rounded-full border border-border bg-background px-2 py-1 text-[12px] text-primary">
                           {topic}
                         </span>
                       ))}
@@ -106,12 +67,10 @@ export const FeaturedProjectsSection = () => {
           </div>
         )}
 
-        {/* See All Projects link */}
-        <div style={{ marginTop: "32px" }}>
+        <div className="mt-8">
           <Link
             to="/projects"
-            style={{ fontSize: "14px", fontWeight: 500, textDecoration: "none" }}
-            className="group inline-flex items-center text-primary hover:text-secondary transition-colors duration-150 ease-in-out"
+            className="group inline-flex items-center text-sm font-medium text-primary no-underline transition-colors duration-150 ease-in-out hover:text-secondary"
           >
             All personal projects <span className="ml-1 transition-transform duration-150 ease-in-out group-hover:translate-x-1">&rarr;</span>
           </Link>

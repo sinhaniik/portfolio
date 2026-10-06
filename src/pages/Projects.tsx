@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { SEO } from '@/components/SEO/SEO';
 import { useGitHubRepos, GitHubRepo } from '@/hooks/useGitHubRepos';
-import { getRepoCategory, getRepoCoverColor, formatRepoDate, formatRepoName } from '@/utils/githubHelpers';
+import { getRepoCategory, formatRepoDate, formatRepoName } from '@/utils/githubHelpers';
 
-const ProjectCard = ({ project, isFeatured, isLarge, index }: { project: GitHubRepo, isFeatured: boolean, isLarge: boolean, index: number }) => {
-  const coverHeight = isLarge ? 'h-[120px]' : isFeatured ? 'h-[80px]' : 'h-[60px]';
-  const coverColor = getRepoCoverColor(index);
-  
+const ProjectCard = ({ project, isFeatured, isLarge }: { project: GitHubRepo, isFeatured: boolean, isLarge: boolean }) => {
   const title = formatRepoName(project.name);
   const description = project.description || "A project by Nikhil — visit GitHub for details.";
   const tags = project.topics.length > 0 
@@ -15,11 +12,7 @@ const ProjectCard = ({ project, isFeatured, isLarge, index }: { project: GitHubR
 
   return (
     <div className={`group h-full flex flex-col bg-surface border-[0.5px] border-border rounded-xl overflow-hidden transition-all duration-150 ease-in-out hover:-translate-y-[3px] hover:border-primary ${isLarge ? 'md:col-span-2 md:row-span-2' : ''}`}>
-      {/* Cover Image Band */}
-      <div
-        className={`w-full ${coverHeight} relative shrink-0`}
-        style={{ backgroundColor: coverColor }}
-      ></div>
+      <div className="h-[3px] shrink-0 bg-primary" />
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-grow">
@@ -33,7 +26,7 @@ const ProjectCard = ({ project, isFeatured, isLarge, index }: { project: GitHubR
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6 mt-auto">
           {tags.map(tag => (
-            <span key={tag} className="bg-background text-primary text-[11px] font-medium rounded-full px-2 py-0.5 border border-border">
+            <span key={tag} className="bg-background text-primary text-[12px] font-medium rounded-full px-2 py-1 border border-border">
               {tag}
             </span>
           ))}
@@ -69,7 +62,7 @@ const ProjectCard = ({ project, isFeatured, isLarge, index }: { project: GitHubR
 
 const SkeletonCard = () => (
   <div className="flex flex-col bg-surface border-[0.5px] border-border rounded-xl overflow-hidden animate-pulse">
-    <div className="w-full h-[60px] bg-border opacity-50 relative shrink-0"></div>
+    <div className="h-[3px] shrink-0 bg-border"></div>
     <div className="p-6 flex flex-col gap-4">
       <div className="h-6 bg-border opacity-50 rounded w-2/3"></div>
       <div className="space-y-2">
@@ -77,8 +70,8 @@ const SkeletonCard = () => (
         <div className="h-4 bg-border opacity-30 rounded w-5/6"></div>
       </div>
       <div className="flex gap-2 mt-2">
-        <div className="h-5 w-12 bg-border opacity-50 rounded-full"></div>
-        <div className="h-5 w-16 bg-border opacity-50 rounded-full"></div>
+        <div className="h-7 w-12 bg-border opacity-50 rounded-full"></div>
+        <div className="h-7 w-16 bg-border opacity-50 rounded-full"></div>
       </div>
     </div>
   </div>
@@ -167,7 +160,6 @@ export default function Projects() {
                     project={project}
                     isFeatured={true}
                     isLarge={idx === 0}
-                    index={idx}
                   />
                 ))}
               </div>
@@ -192,13 +184,12 @@ export default function Projects() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-              {finalFilteredProjects.map((project, idx) => (
+              {finalFilteredProjects.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
                   isFeatured={false}
                   isLarge={false}
-                  index={featuredRepos.length + idx}
                 />
               ))}
               {finalFilteredProjects.length === 0 && (
