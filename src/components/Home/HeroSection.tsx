@@ -23,7 +23,7 @@ export const HeroSection = () => {
         </Link>
         <Link
           to="/blog"
-          className="inline-flex justify-center items-center px-6 py-3 border-2 border-primary text-primary rounded-lg font-medium transition duration-150 ease-in-out hover:bg-primary hover:text-surface"
+          className="inline-flex justify-center items-center px-6 py-3 border-2 border-primary text-primary rounded-lg font-medium transition duration-150 ease-in-out hover:-translate-y-[2px]"
         >
           Read My Blog
         </Link>

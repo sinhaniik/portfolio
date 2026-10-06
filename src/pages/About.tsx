@@ -65,7 +65,7 @@ const AboutPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4">
+            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4 transition duration-150 ease-in-out hover:-translate-y-[3px]">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
@@ -76,7 +76,7 @@ const AboutPage: React.FC = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4">
+            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4 transition duration-150 ease-in-out hover:-translate-y-[3px]">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
@@ -87,7 +87,7 @@ const AboutPage: React.FC = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4">
+            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4 transition duration-150 ease-in-out hover:-translate-y-[3px]">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
@@ -248,7 +248,7 @@ const AboutPage: React.FC = () => {
           </Link>
           <Link
             to="/contact"
-            className="inline-flex justify-center items-center px-6 py-3 border-2 border-primary text-primary rounded-lg font-medium transition duration-150 ease-in-out hover:bg-primary hover:text-surface"
+            className="inline-flex justify-center items-center px-6 py-3 border-2 border-primary text-primary rounded-lg font-medium transition duration-150 ease-in-out hover:-translate-y-[2px]"
           >
             Get In Touch
           </Link>
