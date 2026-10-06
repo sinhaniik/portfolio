@@ -7,6 +7,8 @@ import { timelineItems } from "@/data/timeline";
 const learningItems = [
   { topic: "Kubernetes", status: "in-progress" },
   { topic: "Terraform", status: "in-progress" },
+  { topic: "Golang", status: "in-progress" },
+  { topic: "System programming", status: "in-progress" },
 ];
 
 const AboutPage: React.FC = () => {
@@ -39,7 +41,7 @@ const AboutPage: React.FC = () => {
                 At OneZippy.ai the job was infrastructure on client-provided servers: Linux/RHEL, Docker, Nginx, Trivy, and a 14-day patch cycle. Feb 2024 – Apr 2026.
               </p>
               <p>
-                I am learning Kubernetes and Terraform in public, in self-directed labs.
+                I am learning Kubernetes, Terraform, Golang, and system programming in public, in self-directed labs.
               </p>
               <p>
                 Open to DevOps, SRE and Cloud Engineer roles. India remote or relocation abroad.
@@ -91,7 +93,7 @@ const AboutPage: React.FC = () => {
               </svg>
               <h3 className="text-xl font-medium text-primary">What I'm learning</h3>
               <p className="text-base text-text-muted leading-relaxed">
-                Kubernetes and Terraform, in public labs. Not part of the paid work.
+                Kubernetes, Terraform, Golang, and system programming, in public labs. Not part of the paid work.
               </p>
             </div>
           </div>
@@ -187,7 +189,7 @@ const AboutPage: React.FC = () => {
           Learning (self-directed labs)
         </h2>
         <p className="text-base text-text-muted mb-12">
-          Kubernetes and Terraform. Public labs, separate from the job.
+          Kubernetes, Terraform, Golang, and system programming. Public labs, separate from the job.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

@@ -44,11 +44,10 @@ export const skillGroups: SkillGroup[] = [
       "TypeScript",
       "REST APIs",
       "MongoDB",
-      "Golang",
     ],
   },
   {
     label: "Learning (self-directed labs)",
-    skills: ["Kubernetes", "Terraform"],
+    skills: ["Kubernetes", "Terraform", "Golang", "System programming"],
   },
 ];
