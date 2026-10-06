@@ -8,25 +8,31 @@ interface SEOProps {
   type?: string;
 }
 
-export const SEO = ({ description, url, image, type = 'website' }: SEOProps) => {
-  const siteName = "Nikhil | SDE & Infrastructure";
+const SITE_ORIGIN = 'https://sinhaniik.com';
+
+export const SEO = ({ title, description, url, image, type = 'website' }: SEOProps) => {
+  const documentTitle = `${title} | Nikhil`;
+  const canonical =
+    url ??
+    (typeof window !== 'undefined'
+      ? `${SITE_ORIGIN}${window.location.pathname}`
+      : SITE_ORIGIN);
+
   return (
     <Helmet>
-      {/* Standard metadata tags */}
-      <title>{siteName}</title>
+      <title>{documentTitle}</title>
       <meta name="description" content={description} />
-      
-      {/* Open Graph / Facebook */}
+      <link rel="canonical" href={canonical} />
+
       <meta property="og:type" content={type} />
-      {url && <meta property="og:url" content={url} />}
-      <meta property="og:title" content={siteName} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:title" content={documentTitle} />
       <meta property="og:description" content={description} />
       {image && <meta property="og:image" content={image} />}
 
-      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      {url && <meta property="twitter:url" content={url} />}
-      <meta name="twitter:title" content={siteName} />
+      <meta name="twitter:url" content={canonical} />
+      <meta name="twitter:title" content={documentTitle} />
       <meta name="twitter:description" content={description} />
       {image && <meta name="twitter:image" content={image} />}
     </Helmet>

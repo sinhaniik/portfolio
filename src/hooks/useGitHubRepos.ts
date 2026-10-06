@@ -28,38 +28,47 @@ export function useGitHubRepos(): UseGitHubReposReturn {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let isMounted = true;
+    const controller = new AbortController();
 
     async function fetchRepos() {
       try {
         setLoading(true);
-        const response = await fetch(
-          "https://api.github.com/users/sinhaniik/repos?sort=updated&direction=desc&per_page=30&type=public",
-          {
-            headers: {
-              Accept: "application/vnd.github.mercy-preview+json",
+        const collected: GitHubRepo[] = [];
+
+        for (let page = 1; page <= 10; page += 1) {
+          const response = await fetch(
+            `https://api.github.com/users/sinhaniik/repos?sort=updated&direction=desc&per_page=100&page=${page}&type=owner`,
+            {
+              headers: {
+                Accept: "application/vnd.github+json",
+              },
+              signal: controller.signal,
             },
+          );
+
+          if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
           }
+
+          const data: unknown = await response.json();
+          if (!Array.isArray(data)) {
+            throw new Error("GitHub API error: unexpected response");
+          }
+
+          collected.push(...(data as GitHubRepo[]));
+          if (data.length < 100) break;
+        }
+
+        const filtered = collected.filter(
+          (repo) => !repo.fork && repo.description !== null && repo.description.trim() !== "",
         );
-
-        if (!response.ok) {
-          throw new Error(`GitHub API error: ${response.status}`);
-        }
-
-        const data: GitHubRepo[] = await response.json();
-
-        if (isMounted) {
-          // Filter out forks and repos with no description
-          const filtered = data.filter(r => !r.fork && r.description !== null && r.description.trim() !== "");
-          setRepos(filtered);
-          setError(null);
-        }
+        setRepos(filtered);
+        setError(null);
       } catch (err) {
-        if (isMounted) {
-          setError("Could not load repositories. Visit GitHub directly.");
-        }
+        if (err instanceof Error && err.name === "AbortError") return;
+        setError("Could not load repositories. Visit GitHub directly.");
       } finally {
-        if (isMounted) {
+        if (!controller.signal.aborted) {
           setLoading(false);
         }
       }
@@ -68,7 +77,7 @@ export function useGitHubRepos(): UseGitHubReposReturn {
     fetchRepos();
 
     return () => {
-      isMounted = false;
+      controller.abort();
     };
   }, []);
 

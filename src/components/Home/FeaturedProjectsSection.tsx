@@ -3,7 +3,7 @@ import { useGitHubRepos } from "@/hooks/useGitHubRepos";
 import { getRepoCoverColor, formatRepoName, getRepoCategory } from "@/utils/githubHelpers";
 
 export const FeaturedProjectsSection = () => {
-  const { repos, loading } = useGitHubRepos();
+  const { repos, loading, error } = useGitHubRepos();
   const featuredRepos = repos.slice(0, 3);
 
   return (
@@ -26,6 +26,10 @@ export const FeaturedProjectsSection = () => {
               </div>
             ))}
           </div>
+        ) : error ? (
+          <p className="text-base text-text-muted">Could not load selected work.</p>
+        ) : featuredRepos.length === 0 ? (
+          <p className="text-base text-text-muted">No projects to show yet.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredRepos.map((repo, index) => (
@@ -106,8 +110,8 @@ export const FeaturedProjectsSection = () => {
         <div style={{ marginTop: "32px" }}>
           <Link
             to="/projects"
-            style={{ fontSize: "14px", fontWeight: 500, color: "var(--color-primary)", textDecoration: "none" }}
-            className="group inline-flex items-center hover:text-[--color-secondary] transition-colors duration-150 ease-in-out"
+            style={{ fontSize: "14px", fontWeight: 500, textDecoration: "none" }}
+            className="group inline-flex items-center text-primary hover:text-secondary transition-colors duration-150 ease-in-out"
           >
             See All Projects <span className="ml-1 transition-transform duration-150 ease-in-out group-hover:translate-x-1">&rarr;</span>
           </Link>

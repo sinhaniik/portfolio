@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
 import { SEO } from '@/components/SEO/SEO';
-import { getBlogPost } from '@/utils/localBlogPosts';
+import { formatBlogDate, getBlogPost } from '@/utils/localBlogPosts';
 import './Blog.css';
 
 const FONT_URL = 'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap';
@@ -13,6 +13,7 @@ export default function BlogPost() {
   if (!post) {
     return (
       <div className="blog-editorial mx-auto w-full max-w-2xl px-6 py-20 md:px-10">
+        <SEO title="Post not found" description="This post may have moved or is not published yet." />
         <Helmet>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -30,17 +31,12 @@ export default function BlogPost() {
   }
 
   const { Content, frontmatter } = post;
-  const publishedDate = new Date(frontmatter.date).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
+  const publishedDate = formatBlogDate(frontmatter.date);
 
   return (
     <div className="blog-editorial w-full px-6 pb-32 pt-16 md:px-10 md:pt-20">
       <SEO title={frontmatter.title} description={frontmatter.description} type="article" />
       <Helmet>
-        <title>{frontmatter.title} | Nikhil</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href={FONT_URL} rel="stylesheet" />

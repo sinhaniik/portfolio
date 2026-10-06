@@ -41,15 +41,15 @@ const AboutPage: React.FC = () => {
           {/* Left column — text */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <div>
-              <span className="text-[12px] uppercase tracking-wide text-[--color-text-muted] font-medium block mb-2">
+              <span className="text-[12px] uppercase tracking-wide text-text-muted font-medium block mb-2">
                 About me
               </span>
-              <h1 className="text-4xl md:text-5xl font-semibold text-[--color-primary]">
+              <h1 className="text-4xl md:text-5xl font-semibold text-primary">
                 I'm Nikhil
               </h1>
             </div>
 
-            <div className="flex flex-col gap-4 text-base leading-relaxed text-[--color-text]">
+            <div className="flex flex-col gap-4 text-base leading-relaxed text-text">
               <p>
                 I'm a Software Engineer at ClaimZippy in Bengaluru, where I work across the full stack — React, TypeScript, Node.js, and Python on the application side, and Docker, Linux, and RHEL on the infrastructure side. I've shipped production features, containerised hospital management systems, managed deployment pipelines, and handled client-facing technical operations.
               </p>
@@ -70,42 +70,42 @@ const AboutPage: React.FC = () => {
       </section>
 
       {/* Section 2 — The Transition Story */}
-      <section className="w-full bg-[--color-surface] py-20 px-6 md:px-16 lg:px-32">
+      <section className="w-full bg-surface py-20 px-6 md:px-16 lg:px-32">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-[32px] font-medium text-[--color-primary] mb-12 text-center">
+          <h2 className="text-[32px] font-medium text-primary mb-12 text-center">
             The Dev &rarr; DevOps Shift
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-[--color-background] rounded-xl p-6 border border-[--color-border] flex flex-col gap-4">
+            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
-              <h3 className="text-xl font-medium text-[--color-primary]">What I build</h3>
-              <p className="text-base text-[--color-text-muted] leading-relaxed">
+              <h3 className="text-xl font-medium text-primary">What I build</h3>
+              <p className="text-base text-text-muted leading-relaxed">
                 Full-stack applications with React, TypeScript, Node.js, and MongoDB. I've shipped production features, refactored codebases for performance, and built client-facing products end to end.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-[--color-background] rounded-xl p-6 border border-[--color-border] flex flex-col gap-4">
+            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
-              <h3 className="text-xl font-medium text-[--color-primary]">What I operate</h3>
-              <p className="text-base text-[--color-text-muted] leading-relaxed">
+              <h3 className="text-xl font-medium text-primary">What I operate</h3>
+              <p className="text-base text-text-muted leading-relaxed">
                 Production Docker deployments on RHEL servers, Bash automation, Python RPA workflows, and Linux infrastructure support. Not in a sandbox — in systems clients use every day.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-[--color-background] rounded-xl p-6 border border-[--color-border] flex flex-col gap-4">
+            <div className="bg-background rounded-xl p-6 border border-border flex flex-col gap-4">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
-              <h3 className="text-xl font-medium text-[--color-primary]">What I'm building next</h3>
-              <p className="text-base text-[--color-text-muted] leading-relaxed">
+              <h3 className="text-xl font-medium text-primary">What I'm building next</h3>
+              <p className="text-base text-text-muted leading-relaxed">
                 CI/CD pipelines, Kubernetes, Terraform, and cloud infrastructure on AWS. Adding systematic depth to what I've already done hands-on in production.
               </p>
             </div>
@@ -126,17 +126,17 @@ const AboutPage: React.FC = () => {
         `}</style>
 
         <div className="text-center mb-16 md:mb-24">
-          <h2 className="text-[32px] font-medium text-[--color-primary] mb-2">
+          <h2 className="text-[32px] font-medium text-primary mb-2">
             Experience &amp; Education
           </h2>
-          <p className="text-base text-[--color-text-muted]">
+          <p className="text-base text-text-muted">
             The path so far.
           </p>
         </div>
 
         <div className="relative w-full max-w-4xl mx-auto">
           {/* Vertical Line spanning entire timeline container */}
-          <div className="absolute left-[15px] md:left-1/2 md:-ml-[0.5px] top-[24px] bottom-12 w-[1px] bg-[--color-border] z-0"></div>
+          <div className="absolute left-[15px] md:left-1/2 md:-ml-[0.5px] top-[24px] bottom-12 w-[1px] bg-border z-0"></div>
 
           <div className="flex flex-col w-full">
             {timelineItems.map((item, idx) => {
@@ -153,22 +153,22 @@ const AboutPage: React.FC = () => {
 
                     {/* Colored overlay segment for consecutive ClaimZippy entries */}
                     {isContiguousClaimZippy && (
-                      <div className="absolute top-[24px] bottom-[-24px] sm:bottom-[-32px] w-[1px] left-[15px] md:left-1/2 md:-ml-[0.5px] z-0 bg-[--color-primary] opacity-40"></div>
+                      <div className="absolute top-[24px] bottom-[-24px] sm:bottom-[-32px] w-[1px] left-[15px] md:left-1/2 md:-ml-[0.5px] z-0 bg-primary opacity-40"></div>
                     )}
 
                     {/* Dot Container */}
                     <div className="absolute top-[24px] -translate-y-1/2 left-[10px] md:left-1/2 md:-translate-x-1/2 z-10 flex items-center justify-center">
                       {item.status === 'current' && (
                         <div className="absolute w-[20px] h-[20px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20">
-                          <div className="w-full h-full rounded-full bg-[--color-primary] animate-custom-ping"></div>
+                          <div className="w-full h-full rounded-full bg-primary animate-custom-ping"></div>
                         </div>
                       )}
-                      <div className={`w-[10px] h-[10px] rounded-full ${item.type === 'work' ? 'bg-[--color-primary]' : 'bg-[--color-background] border-[2px] border-[--color-primary]'} relative z-10`}></div>
+                      <div className={`w-[10px] h-[10px] rounded-full ${item.type === 'work' ? 'bg-primary' : 'bg-background border-[2px] border-primary'} relative z-10`}></div>
                     </div>
 
                     {/* Promoted Pill */}
                     {isContiguousClaimZippy && (
-                      <div className="absolute bottom-[24px] sm:bottom-[32px] translate-y-1/2 left-[15px] md:left-1/2 -translate-x-1/2 z-10 px-2.5 py-0.5 bg-[--color-surface] text-[--color-primary] border border-[--color-border] rounded-full text-[11px] font-medium leading-none flex items-center justify-center">
+                      <div className="absolute bottom-[24px] sm:bottom-[32px] translate-y-1/2 left-[15px] md:left-1/2 -translate-x-1/2 z-10 px-2.5 py-0.5 bg-surface text-primary border border-border rounded-full text-[11px] font-medium leading-none flex items-center justify-center">
                         Promoted
                       </div>
                     )}
@@ -177,18 +177,18 @@ const AboutPage: React.FC = () => {
                     <div className={`w-full pl-[45px] md:pl-0 md:w-1/2 flex items-start ${isLeft ? 'md:justify-end md:pr-10' : 'md:justify-start md:pl-10'} relative`}>
 
                       {/* Horizontal Line connector */}
-                      <div className={`absolute top-[24px] bg-[--color-border] h-[1px] z-0 left-[20px] w-[25px] md:w-[40px] ${isLeft ? 'md:right-0 md:left-auto' : 'md:left-0 md:right-auto'}`}></div>
+                      <div className={`absolute top-[24px] bg-border h-[1px] z-0 left-[20px] w-[25px] md:w-[40px] ${isLeft ? 'md:right-0 md:left-auto' : 'md:left-0 md:right-auto'}`}></div>
 
                       {/* Card itself */}
-                      <div className="bg-[--color-surface] border-[0.5px] border-[--color-border] rounded-xl p-5 w-full md:max-w-[280px] relative z-10 transition-all duration-150 ease-in-out hover:-translate-y-[3px] hover:border-[--color-primary]">
-                        <div className="font-medium text-[--color-text]">{item.role}</div>
-                        <div className="font-semibold text-[--color-primary] mb-1">{item.company}</div>
-                        <div className="text-[13px] text-[--color-text-muted] tracking-wide mb-3">
+                      <div className="bg-surface border-[0.5px] border-border rounded-xl p-5 w-full md:max-w-[280px] relative z-10 transition-all duration-150 ease-in-out hover:-translate-y-[3px] hover:border-primary">
+                        <div className="font-medium text-text">{item.role}</div>
+                        <div className="font-semibold text-primary mb-1">{item.company}</div>
+                        <div className="text-[13px] text-text-muted tracking-wide mb-3">
                           {item.period} <span className="mx-1">&middot;</span> {item.location}
                         </div>
                         <div className="flex flex-col gap-1 mt-1">
                           {item.description.map((desc, i) => (
-                            <div key={i} className="text-[13px] text-[--color-text-muted] leading-[1.6] flex items-start gap-1.5">
+                            <div key={i} className="text-[13px] text-text-muted leading-[1.6] flex items-start gap-1.5">
                               <span className="shrink-0 leading-[1.6]">&mdash;</span>
                               <span>{desc}</span>
                             </div>
@@ -207,10 +207,10 @@ const AboutPage: React.FC = () => {
 
       {/* Section 3 — Currently Learning */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto">
-        <h2 className="text-[32px] font-medium text-[--color-primary] mb-2">
+        <h2 className="text-[32px] font-medium text-primary mb-2">
           Currently Building
         </h2>
-        <p className="text-base text-[--color-text-muted] mb-12">
+        <p className="text-base text-text-muted mb-12">
           Hands-on projects and structured learning — building the gaps between what I've done in production and full infrastructure ownership.
         </p>
 
@@ -229,10 +229,10 @@ const AboutPage: React.FC = () => {
                   )}
                   <span
                     className={`relative inline-flex rounded-full h-3 w-3 ${isDone
-                      ? 'bg-[--color-primary]'
+                      ? 'bg-primary'
                       : isInProgress
                         ? 'bg-amber-500'
-                        : 'border border-[--color-muted] bg-transparent'
+                        : 'border border-muted bg-transparent'
                       }`}
                   ></span>
                 </span>
@@ -240,8 +240,8 @@ const AboutPage: React.FC = () => {
                 {/* Topic Text */}
                 <span
                   className={`text-base font-medium ${isUpcoming
-                    ? 'opacity-50 text-[--color-text]'
-                    : 'text-[--color-text]'
+                    ? 'opacity-50 text-text'
+                    : 'text-text'
                     }`}
                 >
                   {item.topic}
@@ -261,20 +261,20 @@ const AboutPage: React.FC = () => {
 
       {/* Section 4 — CTA */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-[50rem] mx-auto text-center flex flex-col items-center gap-8">
-        <h2 className="text-[32px] font-medium text-[--color-primary]">
+        <h2 className="text-[32px] font-medium text-primary">
           Looking for someone who ships and operates?
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to="/projects"
-            className="inline-flex justify-center items-center px-6 py-3 bg-[--color-primary] text-[--color-surface] rounded-lg font-medium transition duration-150 ease-in-out hover:bg-[--color-secondary]"
+            className="inline-flex justify-center items-center px-6 py-3 bg-primary text-surface rounded-lg font-medium transition duration-150 ease-in-out hover:bg-secondary"
           >
             View My Projects
           </Link>
           <Link
             to="/contact"
-            className="inline-flex justify-center items-center px-6 py-3 border-2 border-[--color-primary] text-[--color-primary] rounded-lg font-medium transition duration-150 ease-in-out hover:bg-[--color-primary] hover:text-[--color-surface]"
+            className="inline-flex justify-center items-center px-6 py-3 border-2 border-primary text-primary rounded-lg font-medium transition duration-150 ease-in-out hover:bg-primary hover:text-surface"
           >
             Get In Touch
           </Link>

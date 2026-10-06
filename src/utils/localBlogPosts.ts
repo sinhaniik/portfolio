@@ -45,6 +45,25 @@ function getSlug(filePath: string): string {
   return filePath.split('/').pop()?.replace(/\.mdx$/, '') ?? '';
 }
 
+// Date-only strings like "2026-01-01" parse as UTC and shift a day west of UTC.
+function parseBlogDate(isoDate: string): Date {
+  const match = /^(\d{4})-(\d{2})-(\d{2})/.exec(isoDate);
+  if (!match) return new Date(isoDate);
+  return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+}
+
+export function formatBlogDate(isoDate: string): string {
+  return parseBlogDate(isoDate).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
+export function blogYear(isoDate: string): number {
+  return parseBlogDate(isoDate).getFullYear();
+}
+
 export const blogPosts: LocalBlogPost[] = Object.entries(postModules)
   .flatMap(([filePath, postModule]) => {
     if (!isBlogPostFrontmatter(postModule.frontmatter)) return [];
@@ -58,8 +77,8 @@ export const blogPosts: LocalBlogPost[] = Object.entries(postModules)
   })
   .sort(
     (firstPost, secondPost) =>
-      new Date(secondPost.frontmatter.date).getTime() -
-      new Date(firstPost.frontmatter.date).getTime(),
+      parseBlogDate(secondPost.frontmatter.date).getTime() -
+      parseBlogDate(firstPost.frontmatter.date).getTime(),
   );
 
 export function getBlogPost(slug: string | undefined): LocalBlogPost | undefined {

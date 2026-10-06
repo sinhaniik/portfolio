@@ -1,14 +1,42 @@
 import { GitHubRepo } from "@/hooks/useGitHubRepos";
 
-// Maps a GitHub repo's language or topics to a project category
+const devopsKeywords = [
+  "docker",
+  "docker-compose",
+  "dockerfile",
+  "linux",
+  "bash",
+  "ci-cd",
+  "cicd",
+  "github-actions",
+  "kubernetes",
+  "terraform",
+  "ansible",
+  "nginx",
+  "devops",
+  "infrastructure",
+  "deployment",
+  "rhel",
+  "shell",
+];
+
+const personalTopics = ["personal", "personal-website", "portfolio", "side-project"];
+
+// Maps a GitHub repo's name, topics, or language to a project category.
 export function getRepoCategory(repo: GitHubRepo): "Dev" | "DevOps" | "Personal" {
-  const devopsKeywords = ["docker", "linux", "bash", "ci-cd", "kubernetes", 
-                          "terraform", "ansible", "nginx", "devops", "infrastructure",
-                          "deployment", "rhel", "shell"];
-  const topics = repo.topics.map((t: string) => t.toLowerCase());
+  const topics = repo.topics.map((topic) => topic.toLowerCase());
+  const name = repo.name.toLowerCase();
   const lang = repo.language?.toLowerCase() ?? "";
-  
-  if (topics.some((t: string) => devopsKeywords.includes(t))) return "DevOps";
+
+  const isPersonal =
+    topics.some(
+      (topic) => personalTopics.includes(topic) || topic.includes("personal"),
+    ) ||
+    name.includes("portfolio") ||
+    name.includes("personal");
+
+  if (isPersonal) return "Personal";
+  if (topics.some((topic) => devopsKeywords.includes(topic))) return "DevOps";
   if (lang === "shell" || lang === "dockerfile") return "DevOps";
   return "Dev";
 }
@@ -24,9 +52,13 @@ export function formatRepoDate(isoString: string): string {
   return new Date(isoString).toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
 
-// Converts repo name from kebab-case to Title Case
+// Converts repo name from kebab-case or snake_case to Title Case.
 // "linux-lab" → "Linux Lab"
-// "my-portfolio" → "My Portfolio"
+// "personal_portfolio" → "Personal Portfolio"
 export function formatRepoName(name: string): string {
-  return name.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+  return name
+    .split(/[-_]/)
+    .filter((word) => word.length > 0)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }

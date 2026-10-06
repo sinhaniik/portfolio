@@ -1,10 +1,19 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const isActive = (path: string) =>
+    path === '/'
+      ? location.pathname === '/'
+      : location.pathname === path || location.pathname.startsWith(`${path}/`);
 
   const navLinks = [
     { label: 'Home', path: '/' },
@@ -27,7 +36,7 @@ export const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${location.pathname === link.path ? 'text-primary' : 'text-text-muted'
+                  className={`text-sm font-medium transition-colors hover:text-primary ${isActive(link.path) ? 'text-primary' : 'text-text-muted'
                     }`}
                 >
                   {link.label}
@@ -65,7 +74,7 @@ export const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`text-base font-medium transition-colors hover:text-primary ${location.pathname === link.path ? 'text-primary' : 'text-text-muted'
+                  className={`text-base font-medium transition-colors hover:text-primary ${isActive(link.path) ? 'text-primary' : 'text-text-muted'
                     }`}
                 >
                   {link.label}

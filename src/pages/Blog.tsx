@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { SEO } from '@/components/SEO/SEO';
-import { blogPosts, type BlogPostCategory } from '@/utils/localBlogPosts';
+import { blogPosts, blogYear, type BlogPostCategory } from '@/utils/localBlogPosts';
 import './Blog.css';
 
 const FONT_URL = 'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap';
@@ -29,7 +29,7 @@ const PostList = ({ category, emptyMessage }: PostListProps) => {
             {post.frontmatter.title}
           </Link>
           <span className="ml-2 text-base text-text-muted">
-            ({new Date(post.frontmatter.date).getFullYear()})
+            ({blogYear(post.frontmatter.date)})
           </span>
         </li>
       ))}
@@ -45,7 +45,6 @@ export default function Blog() {
         description="Essays and notes about software engineering, infrastructure, and learning systems by Nikhil Sinha."
       />
       <Helmet>
-        <title>Writing | Nikhil</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href={FONT_URL} rel="stylesheet" />
