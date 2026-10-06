@@ -5,35 +5,14 @@ import Terminal from '@/components/Terminal/Terminal';
 import { timelineItems } from "@/data/timeline";
 
 const learningItems = [
-  { topic: "Linux Foundations & Shell Scripting", status: "done" },
-  { topic: "SSH & Key-Based Authentication", status: "done" },
-  { topic: "File Permissions & User Management", status: "done" },
-
-  { topic: "Networking Fundamentals", status: "upcoming" },
-  { topic: "Git & Developer Workflow", status: "done" },
-
-  { topic: "Docker & Containerization", status: "done" },
-
-  { topic: "CI/CD Pipelines (Jenkins + GitHub Actions)", status: "upcoming" },
-
-  { topic: "AWS Core Services (EC2, S3, IAM, VPC)", status: "in-progress" },
-
-  { topic: "CI/CD to Cloud & Secrets Management", status: "upcoming" },
-
-  { topic: "Kubernetes Fundamentals", status: "upcoming" },
-  { topic: "Kubernetes Networking, Helm & Security", status: "upcoming" },
-
-  { topic: "Monitoring & Logging (Prometheus, Grafana, Loki)", status: "upcoming" },
-
-  { topic: "Terraform & Infrastructure as Code", status: "upcoming" },
-
-  { topic: "EKS & Advanced Deployment", status: "upcoming" },
+  { topic: "Kubernetes", status: "in-progress" },
+  { topic: "Terraform", status: "in-progress" },
 ];
 
 const AboutPage: React.FC = () => {
   return (
     <div className="w-full">
-      <SEO title="About" description="My journey from Software Development to DevOps." />
+      <SEO title="About" description="I keep production servers patched and deployments boring." />
 
       {/* Section 1 — Intro / Who I Am */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto">
@@ -45,19 +24,25 @@ const AboutPage: React.FC = () => {
                 About me
               </span>
               <h1 className="text-4xl md:text-5xl font-semibold text-primary">
-                I'm Nikhil
+                I'm Nikhil Sinha
               </h1>
             </div>
 
             <div className="flex flex-col gap-4 text-base leading-relaxed text-text">
               <p>
-                I'm a Software Engineer at ClaimZippy in Bengaluru, where I work across the full stack — React, TypeScript, Node.js, and Python on the application side, and Docker, Linux, and RHEL on the infrastructure side. I've shipped production features, containerised hospital management systems, managed deployment pipelines, and handled client-facing technical operations.
+                I keep production servers patched and deployments boring.
               </p>
               <p>
-                Most SDE resumes stop at the application layer. Mine doesn't. I've deployed containerised applications to production Linux servers, managed RHEL infrastructure, written Bash and Python automation for real workflows, and maintained systems that clients depend on daily. That cross-layer experience is what I'm doubling down on.
+                Started as a MERN developer, so I see both sides of a deploy.
               </p>
               <p>
-                I'm targeting Software Engineering and DevOps roles abroad — in the USA, Canada, Australia, New Zealand, and Europe — where I can work on systems that demand both engineering depth and operational ownership.
+                At OneZippy.ai the job was infrastructure on client-provided servers: Linux/RHEL, Docker, Nginx, Trivy, and a 14-day patch cycle. Feb 2024 – Apr 2026.
+              </p>
+              <p>
+                I am learning Kubernetes and Terraform in public, in self-directed labs.
+              </p>
+              <p>
+                Open to DevOps, SRE and Cloud Engineer roles. India remote or relocation abroad.
               </p>
             </div>
           </div>
@@ -73,7 +58,7 @@ const AboutPage: React.FC = () => {
       <section className="w-full bg-surface py-20 px-6 md:px-16 lg:px-32">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-[32px] font-medium text-primary mb-12 text-center">
-            The Dev &rarr; DevOps Shift
+            From MERN to DevOps
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -84,7 +69,7 @@ const AboutPage: React.FC = () => {
               </svg>
               <h3 className="text-xl font-medium text-primary">What I build</h3>
               <p className="text-base text-text-muted leading-relaxed">
-                Full-stack applications with React, TypeScript, Node.js, and MongoDB. I've shipped production features, refactored codebases for performance, and built client-facing products end to end.
+                React, Next.js, and Node features for internal workflow tools. Refactored legacy modules and documented deployment workflows.
               </p>
             </div>
 
@@ -95,7 +80,7 @@ const AboutPage: React.FC = () => {
               </svg>
               <h3 className="text-xl font-medium text-primary">What I operate</h3>
               <p className="text-base text-text-muted leading-relaxed">
-                Production Docker deployments on RHEL servers, Bash automation, Python RPA workflows, and Linux infrastructure support. Not in a sandbox — in systems clients use every day.
+                Docker releases and patch cycles on client-provided Linux/RHEL servers. Trivy scans before each deploy.
               </p>
             </div>
 
@@ -104,9 +89,9 @@ const AboutPage: React.FC = () => {
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
                 <circle cx="16" cy="16" r="15" stroke="var(--color-primary)" strokeWidth="1" />
               </svg>
-              <h3 className="text-xl font-medium text-primary">What I'm building next</h3>
+              <h3 className="text-xl font-medium text-primary">What I'm learning</h3>
               <p className="text-base text-text-muted leading-relaxed">
-                CI/CD pipelines, Kubernetes, Terraform, and cloud infrastructure on AWS. Adding systematic depth to what I've already done hands-on in production.
+                Kubernetes and Terraform, in public labs. Not part of the paid work.
               </p>
             </div>
           </div>
@@ -141,7 +126,6 @@ const AboutPage: React.FC = () => {
           <div className="flex flex-col w-full">
             {timelineItems.map((item, idx) => {
               const isLeft = idx % 2 === 0;
-              const isContiguousClaimZippy = idx !== timelineItems.length - 1 && item.company === 'ClaimZippy' && timelineItems[idx + 1]?.company === 'ClaimZippy';
 
               return (
                 <div key={idx} className="relative w-full pb-12 sm:pb-16 last:pb-0">
@@ -150,11 +134,6 @@ const AboutPage: React.FC = () => {
 
                     {/* Desktop Empty Half */}
                     <div className="hidden md:block md:w-1/2"></div>
-
-                    {/* Colored overlay segment for consecutive ClaimZippy entries */}
-                    {isContiguousClaimZippy && (
-                      <div className="absolute top-[24px] bottom-[-24px] sm:bottom-[-32px] w-[1px] left-[15px] md:left-1/2 md:-ml-[0.5px] z-0 bg-primary opacity-40"></div>
-                    )}
 
                     {/* Dot Container */}
                     <div className="absolute top-[24px] -translate-y-1/2 left-[10px] md:left-1/2 md:-translate-x-1/2 z-10 flex items-center justify-center">
@@ -166,13 +145,6 @@ const AboutPage: React.FC = () => {
                       <div className={`w-[10px] h-[10px] rounded-full ${item.type === 'work' ? 'bg-primary' : 'bg-background border-[2px] border-primary'} relative z-10`}></div>
                     </div>
 
-                    {/* Promoted Pill */}
-                    {isContiguousClaimZippy && (
-                      <div className="absolute bottom-[24px] sm:bottom-[32px] translate-y-1/2 left-[15px] md:left-1/2 -translate-x-1/2 z-10 px-2.5 py-0.5 bg-surface text-primary border border-border rounded-full text-[11px] font-medium leading-none flex items-center justify-center">
-                        Promoted
-                      </div>
-                    )}
-
                     {/* Card Container */}
                     <div className={`w-full pl-[45px] md:pl-0 md:w-1/2 flex items-start ${isLeft ? 'md:justify-end md:pr-10' : 'md:justify-start md:pl-10'} relative`}>
 
@@ -183,9 +155,13 @@ const AboutPage: React.FC = () => {
                       <div className="bg-surface border-[0.5px] border-border rounded-xl p-5 w-full md:max-w-[280px] relative z-10 transition-all duration-150 ease-in-out hover:-translate-y-[3px] hover:border-primary">
                         <div className="font-medium text-text">{item.role}</div>
                         <div className="font-semibold text-primary mb-1">{item.company}</div>
-                        <div className="text-[13px] text-text-muted tracking-wide mb-3">
-                          {item.period} <span className="mx-1">&middot;</span> {item.location}
-                        </div>
+                        {(item.period || item.location) && (
+                          <div className="text-[13px] text-text-muted tracking-wide mb-3">
+                            {item.period}
+                            {item.period && item.location ? <span className="mx-1">&middot;</span> : null}
+                            {item.location}
+                          </div>
+                        )}
                         <div className="flex flex-col gap-1 mt-1">
                           {item.description.map((desc, i) => (
                             <div key={i} className="text-[13px] text-text-muted leading-[1.6] flex items-start gap-1.5">
@@ -205,13 +181,13 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 3 — Currently Learning */}
+      {/* Section 3 — Learning */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto">
         <h2 className="text-[32px] font-medium text-primary mb-2">
-          Currently Building
+          Learning (self-directed labs)
         </h2>
         <p className="text-base text-text-muted mb-12">
-          Hands-on projects and structured learning — building the gaps between what I've done in production and full infrastructure ownership.
+          Kubernetes and Terraform. Public labs, separate from the job.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -248,11 +224,7 @@ const AboutPage: React.FC = () => {
                 </span>
 
                 {/* Optional Pill */}
-                {isInProgress && (
-                  <span className="ml-2 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 text-[10px] font-bold uppercase tracking-wider">
-                    Current
-                  </span>
-                )}
+
               </div>
             );
           })}
@@ -262,7 +234,7 @@ const AboutPage: React.FC = () => {
       {/* Section 4 — CTA */}
       <section className="w-full py-20 px-6 md:px-16 lg:px-32 max-w-[50rem] mx-auto text-center flex flex-col items-center gap-8">
         <h2 className="text-[32px] font-medium text-primary">
-          Looking for someone who ships and operates?
+          Open to DevOps, SRE and Cloud Engineer roles.
         </h2>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
