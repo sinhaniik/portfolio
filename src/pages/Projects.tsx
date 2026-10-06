@@ -111,7 +111,7 @@ export default function Projects() {
 
   return (
     <div className="w-full flex-grow flex flex-col">
-      <SEO title="Projects" description="A mix of professional work and personal projects — from full-stack products to DevOps lab work." />
+      <SEO title="Projects" description="Personal and learning projects from GitHub. Work projects are not in this list." />
 
       {/* Hero */}
       <section className="w-full pt-20 pb-12 px-6 md:px-16 lg:px-32 max-w-5xl mx-auto shrink-0">
@@ -119,10 +119,10 @@ export default function Projects() {
           Projects
         </span>
         <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-6">
-          Things I've built.
+          Personal & learning projects
         </h1>
         <p className="text-base text-text-muted leading-relaxed max-w-2xl">
-          A mix of professional work and personal projects — fetched dynamically via the GitHub REST API.
+          Public GitHub repos only. Work projects are not here.
         </p>
       </section>
 
@@ -141,7 +141,7 @@ export default function Projects() {
 
       {!loading && !error && repos.length === 0 && (
         <div className="w-full py-20 px-6 max-w-5xl mx-auto text-center flex-grow">
-          <p className="text-text-muted">No public repositories to show yet.</p>
+          <p className="text-text-muted">No public repositories yet.</p>
         </div>
       )}
 
@@ -203,7 +203,7 @@ export default function Projects() {
               ))}
               {finalFilteredProjects.length === 0 && (
                 <div className="col-span-full py-12 text-center text-text-muted">
-                  No repositories found for this category.
+                  No repositories in this group.
                 </div>
               )}
             </div>

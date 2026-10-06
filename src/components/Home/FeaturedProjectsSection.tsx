@@ -10,7 +10,7 @@ export const FeaturedProjectsSection = () => {
     <section className="py-20 px-6 md:px-16 lg:px-32">
       <div className="max-w-5xl mx-auto">
         <h2 style={{ fontSize: "32px", fontWeight: 500, color: "var(--color-text)", marginBottom: "32px" }}>
-          Selected Work
+          Personal & learning projects
         </h2>
 
         {loading ? (
@@ -27,9 +27,9 @@ export const FeaturedProjectsSection = () => {
             ))}
           </div>
         ) : error ? (
-          <p className="text-base text-text-muted">Could not load selected work.</p>
+          <p className="text-base text-text-muted">Could not load repositories.</p>
         ) : featuredRepos.length === 0 ? (
-          <p className="text-base text-text-muted">No projects to show yet.</p>
+          <p className="text-base text-text-muted">No public repositories yet.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredRepos.map((repo, index) => (
@@ -113,7 +113,7 @@ export const FeaturedProjectsSection = () => {
             style={{ fontSize: "14px", fontWeight: 500, textDecoration: "none" }}
             className="group inline-flex items-center text-primary hover:text-secondary transition-colors duration-150 ease-in-out"
           >
-            See All Projects <span className="ml-1 transition-transform duration-150 ease-in-out group-hover:translate-x-1">&rarr;</span>
+            All personal projects <span className="ml-1 transition-transform duration-150 ease-in-out group-hover:translate-x-1">&rarr;</span>
           </Link>
         </div>
       </div>
