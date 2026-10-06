@@ -11,7 +11,10 @@ interface SEOProps {
 const SITE_ORIGIN = 'https://sinhaniik.com';
 
 export const SEO = ({ title, description, url, image, type = 'website' }: SEOProps) => {
-  const documentTitle = `${title} | Nikhil`;
+  const documentTitle =
+    title === 'DevOps Engineer'
+      ? 'Nikhil Sinha | DevOps Engineer'
+      : `${title} | Nikhil Sinha`;
   const canonical =
     url ??
     (typeof window !== 'undefined'

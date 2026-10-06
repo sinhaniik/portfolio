@@ -1,8 +1,8 @@
 # Nikhil's Portfolio & Tech Blog
 
-A personal portfolio and technical blog built for mapping my journey from a **Full-Stack Developer** transitioning actively into **DevOps Engineering**.
+Personal portfolio and technical blog for Nikhil Sinha, DevOps Engineer.
 
-This project serves as both a showcase for my development capabilities and an active, documented learning environment for Linux, Docker, CI/CD, and Cloud Infrastructure.
+Public notes on Linux, Docker, CI/CD, and cloud infrastructure. Work projects are not in the GitHub list.
 
 ## 🚀 Live Demo
 *(Deployed on Vercel)*

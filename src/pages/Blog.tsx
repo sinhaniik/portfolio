@@ -57,7 +57,7 @@ export default function Blog() {
             Writing
           </h1>
           <p className="max-w-xl text-xl leading-relaxed text-text md:text-2xl md:leading-relaxed">
-            Notes from building software and operating the systems beneath it — from full-stack engineering to Linux, containers, delivery pipelines, and cloud infrastructure.
+            Notes on Linux, containers, delivery pipelines, and cloud infrastructure.
           </p>
         </header>
 

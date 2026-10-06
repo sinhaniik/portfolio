@@ -5,7 +5,7 @@ import { SEO } from '@/components/SEO/SEO';
 const HomePage: React.FC = () => {
   return (
     <div className="w-full">
-      <SEO title="SDE & Infrastructure" description="Nikhil - Full-Stack Developer & DevOps Engineer Portfolio" />
+      <SEO title="DevOps Engineer" description="DevOps Engineer with 2+ years on AWS and OCI. Linux/RHEL, Docker, Nginx, Trivy, and GitHub Actions." />
       <Home />
     </div>
   );
