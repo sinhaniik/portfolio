@@ -29,12 +29,19 @@ const contactLinks = [
     description: "Thoughts and learning in public",
     external: true,
   },
+  {
+    label: "Hashnode",
+    value: "sinhaniik.hashnode.dev",
+    href: "https://sinhaniik.hashnode.dev",
+    description: "Writing",
+    external: true,
+  },
 ];
 
 export default function Contact() {
   return (
     <div className="w-full">
-      <SEO title="Contact" description="Get in touch for DevOps and Full-Stack development opportunities." />
+      <SEO title="Contact" description="Open to DevOps, SRE and Cloud Engineer roles. India remote or relocation abroad." />
 
       {/* Section 1 — Hero */}
       <section className="w-full pt-20 pb-12 px-6 md:px-16 lg:px-32 max-w-3xl mx-auto flex flex-col justify-center">
@@ -46,10 +53,10 @@ export default function Contact() {
         </h1>
         <div className="flex flex-col gap-2">
           <p className="text-base text-text-muted leading-relaxed">
-            I'm open to DevOps roles, freelance projects, and interesting conversations.
+            Open to DevOps, SRE and Cloud Engineer roles. India remote or relocation abroad.
           </p>
           <p className="text-base text-text-muted leading-relaxed">
-            Best way to reach me is email — I usually respond within 24 hours.
+            Email is the best way to reach me.
           </p>
         </div>
       </section>
@@ -95,7 +102,7 @@ export default function Contact() {
               Want the full picture?
             </h2>
             <p className="text-[14px] text-text-muted">
-              Download my resume — updated March 2026.
+              Download my resume.
             </p>
           </div>
 
