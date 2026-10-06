@@ -11,7 +11,6 @@ const devopsKeywords = [
   "github-actions",
   "kubernetes",
   "terraform",
-  "ansible",
   "nginx",
   "devops",
   "infrastructure",
