@@ -27,7 +27,7 @@ export const Navbar = () => {
     <div className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 md:px-6 pointer-events-none">
       <nav className="pointer-events-auto w-full max-w-5xl bg-surface/90 dark:bg-muted/90 backdrop-blur-xl border border-muted dark:border-text-muted/30 rounded-2xl transition-all duration-150 shadow-[0_2px_12px_rgba(86,28,36,0.08)] dark:shadow-[0_2px_12px_rgba(0,0,0,0.3)] overflow-hidden">
         <div className="px-6 md:px-8 flex justify-between items-center h-16">
-          <Link to="/" className="text-xl font-semibold text-primary">Nikhil Sinha</Link>
+          <Link to="/" className="text-xl font-semibold text-primary">Nikhil</Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
