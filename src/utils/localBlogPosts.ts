@@ -1,7 +1,7 @@
-import type { ComponentType } from 'react';
-import type { MDXProps } from 'mdx/types';
+import type { ComponentType } from "react";
+import type { MDXProps } from "mdx/types";
 
-export type BlogPostCategory = 'Essay' | 'Note';
+export type BlogPostCategory = "Essay" | "Note";
 
 export interface BlogPostFrontmatter {
   title: string;
@@ -23,26 +23,31 @@ export interface LocalBlogPost {
   Content: ComponentType<MDXProps>;
 }
 
-const postModules = import.meta.glob<BlogPostModule>('../posts/*.mdx', {
+const postModules = import.meta.glob<BlogPostModule>("../posts/*.mdx", {
   eager: true,
 });
 
 function isBlogPostFrontmatter(value: unknown): value is BlogPostFrontmatter {
-  if (!value || typeof value !== 'object') return false;
+  if (!value || typeof value !== "object") return false;
 
   const frontmatter = value as Record<string, unknown>;
   return (
-    typeof frontmatter.title === 'string' &&
-    typeof frontmatter.description === 'string' &&
-    typeof frontmatter.date === 'string' &&
-    (frontmatter.category === 'Essay' || frontmatter.category === 'Note') &&
-    typeof frontmatter.readTime === 'string' &&
-    (frontmatter.draft === undefined || typeof frontmatter.draft === 'boolean')
+    typeof frontmatter.title === "string" &&
+    typeof frontmatter.description === "string" &&
+    typeof frontmatter.date === "string" &&
+    (frontmatter.category === "Essay" || frontmatter.category === "Note") &&
+    typeof frontmatter.readTime === "string" &&
+    (frontmatter.draft === undefined || typeof frontmatter.draft === "boolean")
   );
 }
 
 function getSlug(filePath: string): string {
-  return filePath.split('/').pop()?.replace(/\.mdx$/, '') ?? '';
+  return (
+    filePath
+      .split("/")
+      .pop()
+      ?.replace(/\.mdx$/, "") ?? ""
+  );
 }
 
 // Date-only strings like "2026-01-01" parse as UTC and shift a day west of UTC.
@@ -53,10 +58,10 @@ function parseBlogDate(isoDate: string): Date {
 }
 
 export function formatBlogDate(isoDate: string): string {
-  return parseBlogDate(isoDate).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
+  return parseBlogDate(isoDate).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 }
 
@@ -69,11 +74,13 @@ export const blogPosts: LocalBlogPost[] = Object.entries(postModules)
     if (!isBlogPostFrontmatter(postModule.frontmatter)) return [];
     if (postModule.frontmatter.draft) return [];
 
-    return [{
-      slug: getSlug(filePath),
-      frontmatter: postModule.frontmatter,
-      Content: postModule.default,
-    }];
+    return [
+      {
+        slug: getSlug(filePath),
+        frontmatter: postModule.frontmatter,
+        Content: postModule.default,
+      },
+    ];
   })
   .sort(
     (firstPost, secondPost) =>
@@ -81,6 +88,8 @@ export const blogPosts: LocalBlogPost[] = Object.entries(postModules)
       parseBlogDate(firstPost.frontmatter.date).getTime(),
   );
 
-export function getBlogPost(slug: string | undefined): LocalBlogPost | undefined {
+export function getBlogPost(
+  slug: string | undefined,
+): LocalBlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }

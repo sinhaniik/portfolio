@@ -10,6 +10,8 @@ export const Navbar = () => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  if (location.pathname.startsWith('/blog/')) return null;
+
   const isActive = (path: string) =>
     path === '/'
       ? location.pathname === '/'
